@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os 
-FLOUCI_APP_TOKEN='53d9bf53-cd7f-465d-b6e7-c747233d811f'
-FLOUCI_APP_SECRET='78070b23-f3c0-47e8-8d0a-f71f384563f0'
-FLOUCI_REDIRECT_URL="http://127.0.0.1:8000/payme/payment/callback/"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
