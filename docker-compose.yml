@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: payments_service
+    ports:
+      - "8009:8000" 
+    depends_on:
+      - db
+    environment:
+      POSTGRES_DB: rental_db  # Nom de la base de données
+      POSTGRES_USER: root      # Nom d'utilisateur pour PostgreSQL
+      POSTGRES_PASSWORD: password # Mot de passe pour l'utilisateur
+    volumes:
+      - .:/app
+    restart: always
+
+  db:
+    image: postgres:13  # Utiliser l'image de PostgreSQL
+    container_name: postgres-rental
+    ports:
+      - "5434:5432"  # Port pour accéder à PostgreSQL (local:5433 -> conteneur:5432)
+    environment:
+      POSTGRES_DB: rental_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Volume pour persister les données
+    restart: always
+
+volumes:
+  postgres_data:  # Volume pour PostgreSQL
