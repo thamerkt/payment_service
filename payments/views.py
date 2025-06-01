@@ -20,11 +20,14 @@ def start_payment(request):
         )
 
     # Configuration from settings with fallbacks
+    import os
+
     flouci_config = {
-        "app_token": getattr(settings, 'FLOUCI_APP_TOKEN', ''),
-        "app_secret": getattr(settings, 'FLOUCI_APP_SECRET', ''),
-        "redirect_url": getattr(settings, 'FLOUCI_REDIRECT_URL', ''),
+        "app_token": os.environ.get('FLOUCI_APP_TOKEN', ''),
+        "app_secret": os.environ.get('FLOUCI_APP_SECRET', ''),
+        "redirect_url": os.environ.get('FLOUCI_REDIRECT_URL', ''),
     }
+
 
     # Validate required settings
     if not all(flouci_config.values()):
