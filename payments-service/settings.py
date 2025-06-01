@@ -119,3 +119,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('PGDATABASE', 'account_db_kpsn'),  # fallback to your DB name
+        'USER': os.environ.get('PGUSER', 'thamer'),               # fallback username
+        'PASSWORD': os.environ.get('PGPASSWORD'),                  # *must be set in env*
+        'HOST': os.environ.get('PGHOST', 'dpg-d0tflpqdbo4c739ks99g-a'),  # your internal hostname
+        'PORT': os.environ.get('PGPORT', '5432'),                  # default postgres port
+    }
+}
